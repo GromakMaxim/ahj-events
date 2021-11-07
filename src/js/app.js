@@ -1,4 +1,5 @@
 import Field from "./Field";
 
-new Field(16);
+const FIELD_SIZE = 16;
+new Field(FIELD_SIZE);
 
