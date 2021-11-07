@@ -15,6 +15,11 @@
 
 }
 
+.score, .miss {
+  font-family: "Arial Black", serif;
+  font-size: 30px;
+}
+
 .cell.goblin {
   background: url('../img/goblin.png') center center;
 }
