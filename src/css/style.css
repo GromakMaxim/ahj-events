@@ -12,7 +12,10 @@
   width: 100px;
   height: 100px;
   border: 1px double black;
+}
 
+.cell {
+  cursor: crosshair;
 }
 
 .score, .miss {

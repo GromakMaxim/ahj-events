@@ -42,7 +42,7 @@ export default class Field {
         } else {
           this.missValue++;
         }
-        
+
         this.score.textContent = 'Score: ' + this.scoreValue;
         this.miss.textContent = 'Misses: ' + this.missValue;
 
