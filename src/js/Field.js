@@ -42,12 +42,16 @@ export default class Field {
         } else {
           this.missValue++;
         }
+        
+        this.score.textContent = 'Score: ' + this.scoreValue;
+        this.miss.textContent = 'Misses: ' + this.missValue;
+
+        if (this.scoreValue === 5){
+          alert('you are the winner!');
+        }
         if (this.missValue === 5) {
           alert('game over');
         }
-
-        this.score.textContent = 'Score: ' + this.scoreValue;
-        this.miss.textContent = 'Misses: ' + this.missValue;
       });
       this.cells.push(currentCell);
     }
