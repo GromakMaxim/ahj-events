@@ -10,6 +10,10 @@
       "error",
       "LabeledStatement",
       "WithStatement"
-    ]
+    ],
+    "prefer-destructuring": "off",
+    "no-plusplus": "off",
+    "no-alert": "off",
+    "no-new": "off"
   }
 }

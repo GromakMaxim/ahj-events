@@ -1,5 +1,5 @@
-import Cell from "./Cell";
-import generateRndCellNumber from "./randomCellNumber";
+import Cell from './Cell';
+import generateRndCellNumber from './randomCellNumber';
 
 const DELAY = 800;
 
@@ -17,7 +17,7 @@ export default class Field {
       this.cells = [];
       this.process();
     } else {
-      throw new Error('size must be the square of the number')
+      throw new Error('size must be the square of the number');
     }
   }
 
@@ -51,7 +51,7 @@ export default class Field {
           alert('game over');
           this.resetScore();
         }
-      })
+      });
       this.cells.push(currentCell);
     }
   }
@@ -75,12 +75,12 @@ export default class Field {
   resetScore() {
     this.scoreValue = 0;
     this.missValue = 0;
-    this.score.textContent = 'Score: ' + this.scoreValue;
-    this.miss.textContent = 'Misses: ' + this.missValue;
+    this.score.textContent = `Score: ${this.scoreValue}`;
+    this.miss.textContent = `Misses: ${this.missValue}`;
   }
 
   drawScore() {
-    this.score.textContent = 'Score: ' + this.scoreValue;
-    this.miss.textContent = 'Misses: ' + this.missValue;
+    this.score.textContent = `Score: ${this.scoreValue}`;
+    this.miss.textContent = `Misses: ${this.missValue}`;
   }
 }
