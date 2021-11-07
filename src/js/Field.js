@@ -48,9 +48,17 @@ export default class Field {
 
         if (this.scoreValue === 5){
           alert('you are the winner!');
+          this.scoreValue = 0;
+          this.missValue = 0;
+          this.score.textContent = 'Score: ' + this.scoreValue;
+          this.miss.textContent = 'Misses: ' + this.missValue;
         }
         if (this.missValue === 5) {
           alert('game over');
+          this.scoreValue = 0;
+          this.missValue = 0;
+          this.score.textContent = 'Score: ' + this.scoreValue;
+          this.miss.textContent = 'Misses: ' + this.missValue;
         }
       });
       this.cells.push(currentCell);
