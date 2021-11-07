@@ -12,7 +12,15 @@
   width: 100px;
   height: 100px;
   border: 1px double black;
+}
 
+.cell {
+  cursor: crosshair;
+}
+
+.score, .miss {
+  font-family: "Arial Black", serif;
+  font-size: 30px;
 }
 
 .cell.goblin {
