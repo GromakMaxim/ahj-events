@@ -36,7 +36,12 @@ export default class Field {
 
       currentCell.content.addEventListener('click', (event) => {
         event.preventDefault();
-        currentCell.content.classList.contains('goblin') ? this.scoreValue++ : this.missValue++;
+        if (currentCell.content.classList.contains('goblin')) {
+          currentCell.content.classList.remove('goblin');
+          this.scoreValue++;
+        } else {
+          this.missValue++;
+        }
         this.drawScore();
         if (this.scoreValue === 5) {
           alert('you are the winner!');
