@@ -2,6 +2,9 @@ import Cell from './Cell';
 import generateRndCellNumber from './randomCellNumber';
 
 const DELAY = 800;
+const START_SCORE = 0;
+const WINNING_SCORE = 5;
+const LOOSE_SCORE = 5;
 
 export default class Field {
   constructor(size) {
@@ -34,7 +37,7 @@ export default class Field {
     for (let i = 0; i < this.size; i++) {
       const currentCell = new Cell();
 
-      currentCell.content.addEventListener('click', (event) => {
+      currentCell.content.addEventListener('click', async (event) => {
         event.preventDefault();
         if (currentCell.content.classList.contains('goblin')) {
           currentCell.content.classList.remove('goblin');
@@ -42,15 +45,9 @@ export default class Field {
         } else {
           this.missValue++;
         }
-        this.drawScore();
-        if (this.scoreValue === 5) {
-          alert('you are the winner!');
-          this.resetScore();
-        }
-        if (this.missValue === 5) {
-          alert('game over');
-          this.resetScore();
-        }
+        await this.drawScore();
+        await this.checkWinningCondition();
+
       });
       this.cells.push(currentCell);
     }
@@ -66,21 +63,36 @@ export default class Field {
   async switchMonster() {
     const rndNumber = await generateRndCellNumber(0, this.size - 1);
     const cells = document.getElementsByClassName('cell');
-    const found = Array.from(cells).find((cell) => cell.classList.contains('goblin'));
-    if (found !== undefined && found !== null) found.classList.remove('goblin');
-
-    cells[rndNumber].classList.add('goblin');
+    const found = await Array.from(cells).find((cell) => cell.classList.contains('goblin'));
+    if (found !== undefined && found !== null) {
+      found.classList.remove('goblin');
+      this.missValue++;
+      await this.drawScore();
+      await this.checkWinningCondition();
+    } else {
+      cells[rndNumber].classList.add('goblin');
+    }
   }
 
-  resetScore() {
-    this.scoreValue = 0;
-    this.missValue = 0;
-    this.score.textContent = `Score: ${this.scoreValue}`;
-    this.miss.textContent = `Misses: ${this.missValue}`;
+  async resetScore() {
+    this.scoreValue = START_SCORE;
+    this.missValue = START_SCORE;
+    await this.drawScore();
   }
 
   drawScore() {
     this.score.textContent = `Score: ${this.scoreValue}`;
     this.miss.textContent = `Misses: ${this.missValue}`;
+  }
+
+  async checkWinningCondition() {
+    if (this.scoreValue >= WINNING_SCORE) {
+      alert('you are the winner!');
+      await this.resetScore();
+    }
+    if (this.missValue >= LOOSE_SCORE) {
+      alert('game over');
+      await this.resetScore();
+    }
   }
 }
