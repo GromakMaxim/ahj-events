@@ -1,0 +1,1 @@
+.field{display:flex;width:500px;margin-left:auto;margin-right:auto;flex-wrap:wrap;justify-content:center}.cell{display:flex;width:100px;height:100px;border:1px double #000;cursor:crosshair}.miss,.score{font-family:Arial Black,serif;font-size:30px}.cell.goblin{background:url(2dbd01ce16c0fa83cb67e20c73dedb66.png) 50%}
